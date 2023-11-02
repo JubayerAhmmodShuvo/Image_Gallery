@@ -1,7 +1,0 @@
-.image-hover:hover {
-  filter: brightness(0.75); /* Darken the image on hover */
-}
-
-.checkbox {
-  display: none; /* Hide the checkbox by default */
-}
