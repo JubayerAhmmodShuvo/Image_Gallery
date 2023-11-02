@@ -55,34 +55,43 @@ const SortablePhoto = ({
 
   return (
     <div
-      className={styles["sortable-photo-container"]}
+      className={`${styles["sortable-photo-container"]} ${
+        url === "" ? styles["add-image-box"] : ""
+      }`}
       style={{
         gridRow: gridRowSpan,
         gridColumn: gridColumnSpan,
         position: "relative",
-        cursor: "pointer",
+        cursor: url === "" ? "pointer" : "auto",
         ...containerStyle,
       }}
+      onClick={() => {
+        if (url === "") {
+          document.getElementById("image-input").click();
+        }
+      }}
       onMouseEnter={() => {
+        if (url === "") return;
         const checkbox = document.getElementById(url);
         checkbox.style.opacity = "1";
         toggleDeleteButton();
       }}
       onMouseLeave={() => {
+        if (url === "" || checked) return;
         const checkbox = document.getElementById(url);
-        if (!checked) {
-          checkbox.style.opacity = "0";
-        }
+        checkbox.style.opacity = "0";
       }}
     >
-      <input
-        type="checkbox"
-        id={url}
-        className="checkbox-visible"
-        style={checkboxStyle}
-        checked={checked}
-        onChange={() => onChange(url)}
-      />
+      {url !== "" && (
+        <input
+          type="checkbox"
+          id={url}
+          className="checkbox-visible"
+          style={checkboxStyle}
+          checked={checked}
+          onChange={() => onChange(url)}
+        />
+      )}
       <Photo
         className={`${styles.Photo}`}
         ref={setNodeRef}
