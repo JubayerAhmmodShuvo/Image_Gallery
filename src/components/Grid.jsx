@@ -6,7 +6,7 @@ export function Grid({ children }) {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 768) {
-        setColumns(2); 
+        setColumns(1); 
       } else if (window.innerWidth <= 1024) {
         setColumns(3); 
       } else {

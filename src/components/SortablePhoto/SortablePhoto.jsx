@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import { Photo } from "../photo";
@@ -11,6 +11,20 @@ const SortablePhoto = ({
   onChange,
   toggleDeleteButton,
 }) => {
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  const updateScreenWidth = () => {
+    setScreenWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateScreenWidth);
+
+    return () => {
+      window.removeEventListener("resize", updateScreenWidth);
+    };
+  }, []);
+
   const sortable = useSortable({ id: url });
   const {
     attributes,
@@ -29,12 +43,26 @@ const SortablePhoto = ({
   let gridColumnSpan = "span 1";
   let gridRowSpan = "span 2";
 
-  if (index === 0) {
-    gridColumnSpan = "span 2";
-    gridRowSpan = "span 3";
-  } else if (index >= 1 && index <= 3) {
+  if (screenWidth > 768) {
+    if (index === 0) {
+      gridColumnSpan = "span 2";
+      gridRowSpan = "span 3";
+    } else if (index >= 1 && index <= 3) {
+      gridColumnSpan = "span 1";
+      gridRowSpan = "span 1";
+    }
+  } else if (screenWidth <= 768 && screenWidth > 1024) {
+    if (index === 0) {
+      gridColumnSpan = "span 2";
+      gridRowSpan = "span 3";
+    } else if (index >= 1 && index <= 3) {
+      gridColumnSpan = "span 1";
+      gridRowSpan = "span 1";
+    }
+  } else {
+    // For mobile devices, set a single column layout
     gridColumnSpan = "span 1";
-    gridRowSpan = "span 1";
+    gridRowSpan = "span 2"; // Adjust as needed for mobile layout
   }
 
   const containerStyle = {
