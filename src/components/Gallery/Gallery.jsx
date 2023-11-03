@@ -16,6 +16,7 @@ import { Grid } from "../Grid";
 import SortablePhoto from "../SortablePhoto/SortablePhoto";
 import photos from "../../photos.json";
 import GalleryHeader from "./GalleryHeader";
+import AddPhotoButton from "./AddPhotoButton";
 
 const Gallery = () => {
   const [items, setItems] = useState(photos);
@@ -82,7 +83,7 @@ const Gallery = () => {
 
       reader.onload = (e) => {
         const imageUrl = e.target.result;
-        setItems([...items, imageUrl]);
+        setItems((prevItems) => [...prevItems, imageUrl]);
       };
 
       reader.readAsDataURL(file);
@@ -124,19 +125,11 @@ const Gallery = () => {
                 selectedImages={selectedImages}
               />
             ))}
-            <div
-              className="add-photo-box flex justify-center items-center text-lg font-serif text-red-500 align-middle rounded box-border h-48 w-48 p-8 border-2 border-gray-300 "
+
+            <AddPhotoButton
               onClick={handleAddPhotoClick}
-            >
-              Add Photo 
-            </div>
-            <input
-              ref={imageInputRef}
-              id="image-input"
-              type="file"
-              accept="image/*"
-              onChange={handlePhotoUpload}
-              style={{ display: "none" }}
+              handlePhotoUpload={handlePhotoUpload}
+              imageInputRef={imageInputRef}
             />
           </Grid>
         </SortableContext>
