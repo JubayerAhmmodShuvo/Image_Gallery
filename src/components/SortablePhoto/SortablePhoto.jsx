@@ -44,23 +44,22 @@ const SortablePhoto = ({
   let gridRowSpan = "span 2";
 
   if (screenWidth > 768) {
-    if (index === 0) {
-      gridColumnSpan = "span 2";
-      gridRowSpan = "span 3";
-    } else if (index >= 1 && index <= 3) {
-      gridColumnSpan = "span 1";
-      gridRowSpan = "span 1";
-    }
+     if (index === 0) {
+       gridColumnSpan = "span 2";
+       gridRowSpan = "span 2";
+     } else {
+       gridColumnSpan = "span 1"; 
+       gridRowSpan = "span 1"; 
+     }
   } else if (screenWidth <= 768 && screenWidth > 1024) {
     if (index === 0) {
       gridColumnSpan = "span 2";
-      gridRowSpan = "span 3";
+      gridRowSpan = "span 2"; 
     } else if (index >= 1 && index <= 3) {
       gridColumnSpan = "span 1";
       gridRowSpan = "span 1";
     }
   } else {
-   
     gridColumnSpan = "span 1";
     gridRowSpan = "span 2";
   }
