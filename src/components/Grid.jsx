@@ -6,11 +6,11 @@ export function Grid({ children }) {
   useEffect(() => {
     function handleResize() {
       if (window.innerWidth <= 768) {
-        setColumns(1);
+        setColumns(2); 
       } else if (window.innerWidth <= 1024) {
-        setColumns(2);
+        setColumns(3); 
       } else {
-        setColumns(5);
+        setColumns(5); 
       }
     }
 
@@ -30,6 +30,10 @@ export function Grid({ children }) {
         gridTemplateColumns: `repeat(${columns}, 1fr)`,
         gridGap: "10px",
         padding: "10px",
+        width: "100%",
+        overflow: "hidden",
+        height: "100%",
+      
       }}
     >
       {children}
