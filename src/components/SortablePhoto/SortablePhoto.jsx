@@ -60,9 +60,9 @@ const SortablePhoto = ({
       gridRowSpan = "span 1";
     }
   } else {
-    // For mobile devices, set a single column layout
+   
     gridColumnSpan = "span 1";
-    gridRowSpan = "span 2"; // Adjust as needed for mobile layout
+    gridRowSpan = "span 2";
   }
 
   const containerStyle = {

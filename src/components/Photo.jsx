@@ -12,6 +12,7 @@ export const Photo = forwardRef(
       backgroundSize: "cover",
       backgroundPosition: "center",
       backgroundColor: "grey",
+      paddingBottom: "100%", 
       ...style,
     };
 
