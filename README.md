@@ -1,6 +1,6 @@
 # Draggable Image Gallery
 
-![Alt Text](src/assets/your-image.jpg)
+![Alt Text](src/assets/image-gallery.png)
 
 
 ## Features
