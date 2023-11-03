@@ -1,5 +1,8 @@
 # Draggable Image Gallery
 
+![Alt Text](src/assets/your-image.jpg)
+
+
 ## Features
 - Images are draggable.
 - Responsive design for all devices.
